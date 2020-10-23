@@ -813,6 +813,7 @@ unsafe extern "system" fn public_window_callback<T: 'static>(
 
             drop(subclass_input);
             Box::from_raw(subclass_input_ptr as *mut SubclassInput<T>);
+            (subclass_input_ptr as *mut SubclassInput<T>).write_bytes(0, 1);
             0
         }
 
